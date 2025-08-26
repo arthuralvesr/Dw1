@@ -1,0 +1,22 @@
+.title {
+    color: #4C503D;
+    text-align: center;
+}
+
+.cabecalho {
+    color: #707A49;
+    text-align: center;
+}
+
+.buttom {
+    background-color: #4C503D;
+    color: #91A547;
+    padding: 12px 24px;
+    border: #91A547;
+    border-radius: 20px;
+}
+
+.allbuttom {
+    display: flex;
+}
+

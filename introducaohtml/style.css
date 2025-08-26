@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    background-color: rgb(0, 0, 31);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+        
+h1 {
+    text-align: justify;
+    font-size: 88px;
+}
+
+p {
+    color: aliceblue;
+}
+
+.negrito {
+    font-weight: bold;
+}
+
+.sublinhado {
+    text-decoration: underline;
+}
+
+.italico {
+    font-style: italic;
+}
+
+.subscrito {
+    vertical-align: sub;
+}
+
+.sobescrito {
+    vertical-align: super;
+}
+
+.riscado {
+    text-decoration: line-through;
+}
+
+.aa {
+    color: rgb(61, 61, 143);
+}
+
+#teste {
+    color: rgb(38, 80, 216);
+}
+
+#buttom {
+    background-color: aliceblue;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 15px 32px;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+
+}
+
+#buttom:hover {
+    background-color: black;
+    color: red;
+    transform: scale(1.1)
+
+}
