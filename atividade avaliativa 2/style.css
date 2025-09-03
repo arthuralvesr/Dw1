@@ -1,61 +1,64 @@
-*{
+:root {
+    --corlink: rgb(3, 90, 90);
+    --tamanho: 1000px
+}
+
+html body {
+    margin: 0;
     font-family: Arial, sans-serif;
 }
 
-body{
-    margin: 0;
+a[href="link.com"] {
+    color: var(--corlink);
 }
 
-a {
-    color: rgb(3, 90, 90);
-}
-
-p {
+main p {
     font-weight: 400px;
     line-height: 28px;
 }
 
-.cabecalho {
-    max-width: 1000px;
+.cabecalho div{
+    max-width: var(--tamanho);
     margin: auto;
 }
 
-.container {
-    max-width: 1000px;
+div.container {
+    max-width: var(--tamanho);
     margin: auto;
 }
-.topo {
+
+figure .topo {
     width: 100%;
 }
 
-.cinza{
+span.cinza{
     color: gray;
 }
 
 
-.img {
+.img[alt="Imagem dollar"] {
     width: 100%;
     padding: 0 20px;
 }
 
-.secao {
+main .secao {
     font-weight: 50;
     text-align: center;
 }
 
-.titulo {
+main .titulo {
     text-decoration: none;
     font-style: normal;
     text-align: center;
     font-weight: lighter;    
 }
 
-.noticia {
+article .noticia {
     font-weight: 200px;
     line-height: 15px;
 }
 
-#imgdois {
+section #imgdois {
     width: 80%;
 }
 
