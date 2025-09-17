@@ -1,0 +1,61 @@
+.button, .button-outline {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.button:hover, .button-outline:hover {
+  background: rgb(41.1374407583, 30.5592417062, 217.4407582938);
+}
+
+.button-outline {
+  background: transparent;
+  border: 2px solid #4f46e5;
+  color: #4f46e5;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  margin: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.card h2 {
+  color: #4f46e5;
+  margin-bottom: 8px;
+}
+.card p {
+  color: #1f2937;
+}
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+}
+
+.card-1 {
+  border: 2px solid rgb(142.8104265403, 137.0734597156, 238.4265402844);
+}
+
+.card-2 {
+  border: 2px solid rgb(206.6208530806, 204.1469194313, 247.8530805687);
+}
+
+.card-3 {
+  border: 2px solid white;
+}
+
+body {
+  background: #f3f4f6;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}/*# sourceMappingURL=style.css.map */

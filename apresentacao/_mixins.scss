@@ -1,0 +1,13 @@
+// Centralizar com flex
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Card responsivo
+@mixin responsive-card {
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+}

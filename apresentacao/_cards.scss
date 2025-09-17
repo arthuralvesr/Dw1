@@ -1,0 +1,26 @@
+.card {
+  background: white;
+  border-radius: $radius;
+  padding: $double-spacing;
+  margin: $spacing;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: $spacing / 2;
+  }
+
+  p {
+    color: $text-color;
+  }
+
+  @include responsive-card;
+}
+
+// Loop para gerar 3 variações automáticas
+@for $i from 1 through 3 {
+  .card-#{$i} {
+    border: 2px solid lighten($primary-color, $i * 15%);
+  }
+}

@@ -1,0 +1,12 @@
+@import "variables";
+@import "mixins";
+@import "buttons";
+@import "cards";
+
+body {
+  background: $background-color;
+  font-family: Arial, sans-serif;
+  @include center-flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}

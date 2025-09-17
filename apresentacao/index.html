@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demonstração SASS</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { flex-direction: column; }
+    .section-title { font-size: 1.5rem; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1 class="section-title">Demonstração de Recursos do SASS</h1>
+
+  <div class="card card-1">
+    <h2>Variáveis + Nesting</h2>
+    <p>Este título e botão usam cores definidas em variáveis e são estilizados com nesting.</p>
+    <button class="button">Comprar</button>
+  </div>
+
+  <div class="card card-2">
+    <h2>Herança (@extend)</h2>
+    <p>Este botão usa <code>@extend</code> para herdar o estilo do botão padrão.</p>
+    <button class="button-outline">Saiba Mais</button>
+  </div>
+
+  <div class="card card-3">
+    <h2>Mixins + Funções</h2>
+    <p>O layout usa mixins para centralizar e funções para escurecer/claro as cores.</p>
+    <button class="button">Adicionar</button>
+  </div>
+  
+</body>
+</html>

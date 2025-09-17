@@ -1,0 +1,21 @@
+.button {
+  background: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $radius;
+  padding: $spacing / 2 $spacing;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
+
+// Herança
+.button-outline {
+  @extend .button;
+  background: transparent;
+  border: 2px solid $primary-color;
+  color: $primary-color;
+}

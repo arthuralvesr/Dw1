@@ -1,0 +1,14 @@
+// Variáveis
+$primary-color: #4f46e5;
+$secondary-color: #f3f4f6;
+$text-color: #1f2937;
+
+$radius: 12px;
+$spacing: 16px;
+
+// Demonstração de operador (cálculo automático)
+$double-spacing: $spacing * 2;
+
+// Tema claro/escuro
+$dark-mode: false;
+$background-color: if($dark-mode, #111827, $secondary-color);
