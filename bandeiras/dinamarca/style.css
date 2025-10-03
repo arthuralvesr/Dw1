@@ -1,0 +1,21 @@
+* {
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #C8102E;
+}
+
+.faixa-vertical {
+    flex: abs;
+}
+
+.faixa-horizontal {
+
+}
