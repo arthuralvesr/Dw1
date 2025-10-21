@@ -1,0 +1,60 @@
+* {
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.faixa {
+    width: 100%;
+    height: 40%;
+    display: flex;
+}
+
+.vermelho-g {
+    width: 45%;
+    height: 100%;
+    background-color: red;
+}
+
+.mid-line {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.branco-p {
+    width: 100%;
+    height: 50%;
+    background-color: white;
+}
+
+.vermelho-p {
+    width: 100%;
+    height: 50%;
+    background-color: red;
+}
+
+.meio {
+    width: 100%;
+    height: 20%;
+    display: flex;
+}
+
+.vermelho-m {
+    width: 70%;
+    height: 100%;
+    background-color: red;
+}
+
+.branco-m {
+    width: 60%;
+    height: 100%;
+    background-color: white;
+}
