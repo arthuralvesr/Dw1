@@ -1,5 +1,5 @@
 * {
-    margin: auto;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -9,13 +9,36 @@
 
     display: flex;
     flex-direction: column;
+}
+
+.vermelho {
+    background-color: #C8102E;
+    width: 100%;
+    height: 45%;
+
+    display: flex;
+}
+
+.branco {
+    background-color: white;
+    width: 100%;
+    height: 10%;
+}
+
+.vermelhop {
+    width: 30%;
+    height: 20%;
     background-color: #C8102E;
 }
 
-.faixa-vertical {
-    flex: abs;
+.brancoi {
+    width: 7%;
+    height: 100%;
+    background-color: white;
 }
 
-.faixa-horizontal {
-
+.vermelhog {
+    width: 73%;
+    height: 100%;
+    background-color: #C8102E;
 }
