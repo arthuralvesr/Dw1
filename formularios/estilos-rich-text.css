@@ -1,0 +1,37 @@
+.toolbar {
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.toolbar button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.toolbar button:hover {
+    background-color: #eee;
+}
+
+.toolbar input[type="color"] {
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+.richtext {
+    border: 1px solid #ccc;
+    min-height: 150px;
+    padding: 10px;
+    margin-top: 5px;
+}

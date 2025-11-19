@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementos de Formulário HTML</title>
+
+    <link rel="stylesheet" href="estilos4.css">
+    <link rel="stylesheet" href="estilos-rich-text.css">
+</head>
+<body>
+
+<h1>Elementos de Formulário Básicos</h1>
+
+<form id="formulario" method="post" action="salvar.html">
+
+<div>
+    <h2>Input Text e Input Button</h2>
+    <label for="nomecompleto">Nome Completo:</label>
+    <input type="text" class="vermelho" id="nomecompleto" name="nomecompleto" size="50" maxlength="50" placeholder="Digite o seu Nome Completo" autocomplete="off">
+
+    <input type="button" id="btnBoasVindas" value="Boas Vindas" onclick="boasVindas()">
+    <button type="button" id="btnSorteDoDia" onclick="sorteDoDia()">Sorte do Dia</button>
+</div>
+
+<div>
+    <h2>Input Color</h2>
+    <label for="corfundo">Cor de Fundo da Página:</label>
+    <input type="color" id="corfundo" name="corfundo" onchange="mudaCorFundo(this.value)">
+    <span id="corfundo-texto">#000000</span>
+</div>
+
+<div>
+    <h2>Input File</h2>
+    <label for="foto">Foto:</label>
+    <input type="file" id="foto" name="foto">
+</div>
+
+<div>
+    <h2>Input File com Drag and Drop</h2>
+    <div class="drop-zone" id="dropZone">
+        Arraste e solte um arquivo aqui<br>ou clique para selecionar
+        <input type="file" id="fotoDrop" name="fotoDrop" hidden>
+        <div class="file-name" id="fileName"></div>
+    </div>
+</div>
+
+<div>
+    <h2>Input Password</h2>
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha">
+    <input type="button" id="btnVerSenha" value="Mostrar" onclick="mostraSenha(this)">
+</div>
+
+<div>
+    <h2>Input Radio</h2>
+    <label>Você é maior de 18 anos?</label>
+
+    <input type="radio" id="demaior-sim" name="demaior" value="1">
+    <label for="demaior-sim">Sim</label>
+
+    <input type="radio" id="demaior-nao" name="demaior" value="0">
+    <label for="demaior-nao">Não</label>
+</div>
+
+<div>
+    <h2>Input Checkbox</h2>
+    <label>Quais as frutas que você gosta?</label>
+
+    <input type="checkbox" id="seltodasfrutas" name="seltodasfrutas" value="0" onchange="todasFrutas(this)">
+    <label for="seltodasfrutas">Todas</label>
+
+    <input type="checkbox" class="fruta" id="fruta-morango" name="fruta-morango" value="1">
+    <label for="fruta-morango">Morango</label>
+
+    <input type="checkbox" class="fruta" id="fruta-maca" name="fruta-maca" value="2">
+    <label for="fruta-maca">Maçâ</label>
+
+    <input type="checkbox" class="fruta" id="fruta-abacate" name="fruta-abacate" value="3">
+    <label for="fruta-abacate">Abacate</label>
+
+    <input type="checkbox" class="fruta" id="fruta-pera" name="fruta-pera" value="4">
+    <label for="fruta-pera">Pêra</label>
+
+    <input type="checkbox" class="fruta" id="fruta-uva" name="fruta-uva" value="5">
+    <label for="fruta-uva">Uva</label>
+</div>
+
+<div>
+    <h2>Input Range</h2>
+    <label for="idade">Idade:</label>
+    <input type="range" id="idade" name="idade" min="10" max="80" step="0.5" value="10" oninput="mudaIdade(this.value)">
+    <span id="idade-texto">10</span>
+</div>
+
+<div>
+    <h2>Select</h2>
+    <label for="estado">Estado de Nascimento:</label>
+    <select id="estado" name="estado">
+        <option value="">Selecione um Estado</option>
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+    </select>
+</div>
+
+<div>
+    <h2>Textarea</h2>
+    <label for="texto">Texto:</label> <br>
+    <textarea id="texto" name="texto" cols="50" rows="10" maxlength="100" onkeyup="digitaTexto(this.value)"></textarea>
+    <span id="qtdtexto">0/100</span>
+</div>
+
+<div>
+    <h2>Textarea com Rich Text</h2>
+    <div class="toolbar">
+        <button type="button" onclick="execCmd('bold')"><b>B</b></button>
+        <button type="button" onclick="execCmd('italic')"><i>I</i></button>
+        <button type="button" onclick="execCmd('underline')"><u>U</u></button>
+        <button type="button" onclick="execCmd('insertUnorderedList')">• Lista</button>
+        <button type="button" onclick="execCmd('insertOrderedList')">1. Lista</button>
+        <button type="button" onclick="execCmd('createLink', prompt('Digite a URL:'))">🔗 Link</button>
+        <button type="button" onclick="execCmd('removeFormat')">✖ Limpar</button>
+
+        <label for="corTexto">🖊 Cor do texto:</label>
+        <input type="color" id="corTexto" onchange="execCmd('foreColor', this.value)">
+
+        <label for="corFundo">🖌 Fundo:</label>
+        <input type="color" id="corFundo" onchange="execCmd('hiliteColor', this.value)">
+    </div>
+
+    <div id="editor" class="richtext" contenteditable="true">
+        
+    </div>
+</div>
+
+<h1>Elementos de Formulário HTML5</h1>
+
+<h2>Inputs para Elementos de Data</h2>
+
+<div>
+    <h3>Input Date</h3>
+    <label for="dtnascimento">Data de Nascimento:</label>
+    <input type="date" id="dtnascimento" name="dtnascimento">
+</div>
+
+<div>
+    <h3>Input Datetime-local</h3>
+    <label for="dthoranascimento">Data e Hora de Nascimento:</label>
+    <input type="datetime-local" id="dthoranascimento" name="dthoranascimento">
+</div>
+
+<div>
+    <h3>Input Month</h3>
+    <label for="mesnascimento">Mês de Nascimento:</label>
+    <input type="month" id="mesnascimento" name="mesnascimento">
+</div>
+
+<div>
+    <h3>Input Week</h3>
+    <label for="semanaprovas">Semana de Provas:</label>
+    <input type="week" id="semanaprovas" name="semanaprovas">
+</div>
+
+<div>
+    <h3>Input Time</h3>
+    <label for="horanascimento">Hora de Nascimento:</label>
+    <input type="time" id="horanascimento" name="horanascimento">
+</div>
+
+<h2>Inputs para Elementos de Formatação Específica</h2>
+
+<div>
+    <h3>Input E-mail</h3>
+    <label for="email">E-mail de Contato:</label>
+    <input type="email" id="email" name="email">
+</div>
+
+<div>
+    <h3>Input Number</h3>
+    <label for="dianascimento">Dia de Nascimento:</label>
+    <input type="number" id="dianascimento" name="dianascimento" step="1">
+</div>
+
+<div>
+    <h3>Input Search</h3>
+    <label for="pesquisa">Pesquisar por:</label>
+    <input type="search" id="pesquisa" name="pesquisa">
+</div>
+
+<div>
+    <h3>Input Tel</h3>
+    <label for="telefone">Telefone de Contato:</label>
+    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+</div>
+
+<div>
+    <h3>Input Url</h3>
+    <label for="pagina">Página Pessoal:</label>
+    <input type="url" id="pagina" name="pagina" value="ifes.edu.br" disabled>
+</div>
+
+<br>
+<input type="submit" value="Salvar">
+
+</form>
+
+<script src="https://unpkg.com/imask"></script>
+<script src="upload-dragndrop.js"></script>
+<script>
+const maskOptions = {
+    mask: [
+        { mask: '(00) 0000-0000' },  // fixo
+        { mask: '(00) 00000-0000' }  // celular
+    ]
+};
+
+IMask(document.getElementById('telefone'), maskOptions);
+
+// Função auxiliar para executar comandos de formatação
+function execCmd(comando, valor = null) {
+    document.execCommand(comando, false, valor);
+}
+
+// Contador de caracteres do textarea comum
+const textarea = document.getElementById("texto");
+const contador = document.getElementById("qtdtexto");
+
+textarea.addEventListener("input", () => {
+    contador.textContent = `${textarea.value.length}/100`;
+});
+
+function boasVindas(){
+    var nome = document.getElementById("nomecompleto").value;
+    alert("Seja Bem Vindo: "+nome);
+}
+
+function sorteDoDia() {
+    const frases = [
+    "Hoje é um ótimo dia para começar algo novo.",
+    "A sorte favorece os corajosos.",
+    "Grandes oportunidades estão a caminho.",
+    "Siga sua intuição e confie no processo.",
+    "Um sorriso pode mudar o rumo do seu dia.",
+    "O sucesso está mais perto do que você imagina.",
+    "Acredite em si mesmo e o universo acreditará também.",
+    "Tudo o que você busca também está te buscando.",
+    "Um passo de cada vez leva longe.",
+    "A gratidão transforma o comum em extraordinário.",
+    "A paciência é o segredo da serenidade.",
+    "Seja a energia que você quer atrair.",
+    "Algo incrível está prestes a acontecer.",
+    "A vida recompensa quem não desiste.",
+    "Hoje é o dia perfeito para recomeçar.",
+    "Os desafios de hoje são as vitórias de amanhã.",
+    "Você é capaz de mais do que imagina.",
+    "Sorte é o encontro da preparação com a oportunidade.",
+    "Nada é impossível para quem acredita.",
+    "Faça o bem e o bem voltará para você."
+    ];
+
+    const indice = Math.floor(Math.random() * frases.length);
+    alert(frases[indice]);
+}
+
+function mudaCorFundo(cor){
+    document.getElementById("corfundo-texto").innerHTML = cor.toUpperCase();
+    document.body.style.backgroundColor = cor;
+}
+
+function mostraSenha(botao){
+    var campo_senha = document.getElementById("senha");
+
+    if(campo_senha.type == "password"){
+        campo_senha.type = "text";
+        botao.value = "Esconder";
+    }
+    else{
+        campo_senha.type = "password";
+        botao.value = "Mostrar";
+    }
+}
+
+function todasFrutas(campo_todas){
+     const frutas = document.querySelectorAll('.fruta');
+     frutas.forEach(f => f.checked = campo_todas.checked);
+}
+
+function mudaIdade(idade){
+    document.getElementById("idade-texto").innerHTML = idade;
+}
+
+function digitaTexto(texto){
+    document.getElementById("qtdtexto").innerHTML = texto.length + "/100";
+
+}
+</script>
+
+</body>
+</html>

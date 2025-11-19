@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca CEP e Clima</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div class="container">
+        
+        <div class="header">    
+            <p class="explicacao">
+                Aproveitando a atividade para encontrar CEP, procurei uma API 
+                (<a href="https://openweathermap.org" target="_blank">open weather</a>) 
+                que disponibilizasse a temperatura da cidade do cep inserido
+            </p>
+            <h1 class="titulo">Busca CEP e Clima</h1>
+        </div>
+
+
+        <div class="form">
+                
+            <div class="input-box">
+                <label for="cep">CEP:</label>
+                <input name="cep" type="text" class="input-field input-cep" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);">
+            </div>
+
+            <div class="input-box">
+                <label for="rua">Rua:</label>
+                <input type="text" id="rua" name="rua" autocomplete="off">
+            </div>
+
+            <div class="input-box">
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" name="numero" class="input-field">
+            </div>
+
+            <div class="input-box">
+                <label for="complemento">Complemento:</label>
+                <input type="text" id="complemento" name="complemento" class="input-field">
+            </div>
+            
+            <div class="input-box">
+                <label for="bairro">Bairro:</label>
+                <input type="text" id="bairro" name="bairro" autocomplete="off">
+            </div>
+
+            <div class="input-box">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" autocomplete="off">
+            </div>
+            
+            <div class="input-box">
+                <label for="uf">Estado:</label>
+                <select id="uf" name="uf" class="select-field"> 
+                    <option value="">Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+        </div>            
+            
+        <div id="clima">
+            <h2>Clima Atual:</h2>
+            <p id="clima-resultado">Aguardando CEP...</p>
+        </div>
+            
+
+    </div>
+
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        // Não há mais função toggleTheme
+
+        // Aplica a máscara no campo CEP
+        const maskOptions = { mask: [{ mask: '00000-000' }] };
+        IMask(document.getElementById('cep'), maskOptions);
+
+        // --- FUNÇÕES AUXILIARES ---
+
+        function limpa_formulário_cep() {
+            document.getElementById('rua').value = "";
+            document.getElementById('bairro').value = "";
+            document.getElementById('cidade').value = "";
+            document.getElementById('uf').value = "";
+            document.getElementById('clima-resultado').innerHTML = "Aguardando CEP...";
+            document.getElementById('climaCard').style.backgroundColor = '#f4f4f4'; // Volta a cor
+        }
+        
+        function buscarClima(cidade, uf) {
+            const apiKey = '669e1abbbdf480fe4329c9cc8b2e3143'; 
+            const urlOpenWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cidade},${uf},BR&appid=${apiKey}&units=metric&lang=pt_br`;
+
+            fetch(urlOpenWeather)
+                .then(response => response.json())
+                .then(data => {
+                    const climaCard = document.getElementById('climaCard');
+                    
+                    if (data.cod !== 200) {
+                        document.getElementById('clima-resultado').innerHTML = `Erro ao buscar clima para <b>${cidade}</b>.`;
+                        return;
+                    }
+                    
+                    const tempAtual = data.main.temp;
+                    const descricao = data.weather[0].description;
+                    const iconCode = data.weather[0].icon; 
+                    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+                    
+                    const resultadoHTML = `
+                        <span class="clima-local">Local: ${data.name}</span>
+                        <p class="clima-temp">Temperatura: <b>${tempAtual.toFixed(1)}°C</b></p>
+                        <p>Condição: ${descricao.charAt(0).toUpperCase() + descricao.slice(1)}</p>
+                    `;
+                    document.getElementById('clima-resultado').innerHTML = resultadoHTML;
+                    
+                })
+                .catch(error => {
+                    document.getElementById('clima-resultado').innerHTML = `Erro de conexão ao buscar clima.`;
+                    console.error("Erro ao buscar clima:", error);
+                });
+        }
+        
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                document.getElementById('rua').value = (conteudo.logradouro);
+                document.getElementById('bairro').value = (conteudo.bairro);
+                document.getElementById('cidade').value = (conteudo.localidade);
+                document.getElementById('uf').value = (conteudo.uf);
+                
+                buscarClima(conteudo.localidade, conteudo.uf);
+            } 
+            else {
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+
+        function pesquisacep(valor) {
+
+            var cep = valor.replace(/\D/g, '');
+
+            if (cep != "") {
+                var validacep = /^[0-9]{8}$/;
+
+                if(validacep.test(cep)) {
+
+                    document.getElementById('rua').value = "...";
+                    document.getElementById('bairro').value = "...";
+                    document.getElementById('cidade').value = "...";
+                    document.getElementById('uf').value = "...";
+                    
+                    // Mostra o status de busca (simples)
+                    document.getElementById('clima-resultado').innerHTML = "Buscando dados...";
+
+                    var script = document.createElement('script');
+                    script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+                    document.body.appendChild(script);
+
+                } else {
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } 
+            else {
+                limpa_formulário_cep();
+            }
+        };
+
+    </script>
+</body>
+</html>
