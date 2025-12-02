@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario contato | DW1</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <form class="row g-2">
+            <h3>Dados pessoais:</h3>
+
+            <div class="form-floating mb-12 col-md-3">
+                <input type="text" class="form-control" id="nameInput" placeholder="Nome Sobrenome">
+                <label for="nameInput">Nome</label>
+            </div>
+
+            <div class="form-floating mb-12 col-md-3">
+                <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                <label for="emailInput">Endereço de email</label>
+            </div>
+
+            <div class="form-floating mb-12 col-md-2">
+                <input type="date" class="form-control" id="dateInput" placeholder="">
+                <label for="dateInput">Data de nascimento</label>
+            </div>
+            <div class="form-floating mb-12 col-md-2">
+                <input type="tel" class="form-control" id="celInput" placeholder="00 00000-0000">
+                <label for="celInput">Celular</label>
+            </div>
+            <div class="form-floating mb-12 col-md-2">
+                <input type="tel" class="form-control" id="telInput" placeholder="00 0000-0000">
+                <label for="telInput">Telefone</label>
+            </div>
+
+            <h3 class="mt-5">Endereço:</h3>
+
+            <div class="form-floating mb-12 col-md-2">
+                <input type="text" class="form-control" id="cepInput" placeholder="Cep"
+                    onblur="pesquisacep(this.value);">
+                <label for="cepInput">CEP</label>
+            </div>
+
+            <div class="form-floating mb-12 col-md-6">
+                <input type="text" class="form-control" id="logInput" placeholder="Rua">
+                <label for="logInput">Logradouro</label>
+            </div>
+
+            <div class="form-floating mb-12 col-md-2">
+                <input type="text" class="form-control" id="bairroInput" placeholder="Rua">
+                <label for="bairroInput">Bairro</label>
+            </div>
+            <div class="form-floating mb-12 col-md-2">
+                <input type="number" class="form-control" id="numInput" placeholder="Número">
+                <label for="numInput">Número</label>
+            </div>
+            <div class="form-floating mb-12 col-md-6">
+                <input type="text" class="form-control" id="compInput" placeholder="Complemento">
+                <label for="compInput">Complemento</label>
+            </div>
+
+            <div class="form-floating mb-12 col-md-3">
+                <input type="text" class="form-control" id="cidInput" placeholder="Cidade">
+                <label for="cidInput">Cidade</label>
+            </div>
+            <div class="form-floating col-md-3">
+                <select class="form-select" id="ufInput" aria-label="Floating label select example">
+                    <option disabled selected>Selecione um estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                <label for="floatingSelect">UF</label>
+            </div>
+
+            <div class="form-floating mt-5">
+                <textarea class="form-control" placeholder="Comentario" id="comentInput" style="height: 100px"></textarea>
+                <label for="comentInput">Comentário</label>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous">
+                </script>
+
+            <script>
+
+                function pesquisacep(valor) {
+
+                    var cep = valor.replace(/\D/g, '');
+
+                    if (cep != "") {
+                        var validacep = /^[0-9]{8}$/;
+
+                        if (validacep.test(cep)) {
+
+                            document.getElementById('logInput').value = "...";
+                            document.getElementById('bairroInput').value = "...";
+                            document.getElementById('cidInput').value = "...";
+                            document.getElementById('ufInput').value = "...";
+
+
+                            var script = document.createElement('script');
+                            script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+                            document.body.appendChild(script);
+
+                        } else {
+                            limpa_formulário_cep();
+                            alert("Formato de CEP inválido.");
+                        }
+                    }
+                    else {
+                        limpa_formulário_cep();
+                    }
+                };
+
+                function meu_callback(conteudo) {
+                    if (!("erro" in conteudo)) {
+                        document.getElementById('logInput').value = (conteudo.logradouro);
+                        document.getElementById('bairroInput').value = (conteudo.bairro);
+                        document.getElementById('cidInput').value = (conteudo.localidade);
+                        document.getElementById('ufInput').value = (conteudo.uf);
+
+                        buscarClima(conteudo.localidade, conteudo.uf);
+                    }
+                    else {
+                        limpa_formulário_cep();
+                        alert("CEP não encontrado.");
+                    }
+                }
+
+                function limpa_formulário_cep() {
+                    document.getElementById('logInput').value = "";
+                    document.getElementById('bairroInput').value = "";
+                    document.getElementById('cidInput').value = "";
+                    document.getElementById('ufInput').value = "";
+                }
+            </script>
+</body>
+
+</html>
