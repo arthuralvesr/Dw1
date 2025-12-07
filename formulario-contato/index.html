@@ -128,8 +128,18 @@
             </script>
 
             <script>
-                const maskOptions = { mask: [{ mask: '00000-000' }] };
-                IMask(document.getElementById('cepInput'), maskOptions);
+                const cepMask = IMask(
+                    document.getElementById('cepInput'),
+                    { mask: '00000-000' } );
+
+                const telMask = IMask(
+                    document.getElementById('telInput'),
+                    { mask: '(00) 0000-0000' } );
+
+                const celMask = IMask(
+                    document.getElementById('celInput'),
+                    { mask: '(00) 00000-0000' }
+                );
 
                 function pesquisacep(valor) {
 
