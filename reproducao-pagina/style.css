@@ -1,0 +1,22 @@
+.cabecalho {
+    background-color: red;
+    color: white;
+}
+
+.logo {
+    color: white;
+}
+
+.link-cabecalho {
+    color: red;
+}
+
+.link-text {
+    color: red;
+    text-decoration: none;
+}
+
+.comentario {
+    border: 1px solid gray;
+    padding: 20px;
+}
